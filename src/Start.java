@@ -8,5 +8,9 @@ public class Start {
         //StartFenster hansolo = new StartFenster("KK");
         GUI nasi = new GUI("KK");
 
+
+
+
+
     }
 }

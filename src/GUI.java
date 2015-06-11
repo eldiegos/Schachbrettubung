@@ -18,10 +18,24 @@ public class GUI extends JFrame {
         boolean istSchwarz = true;
         for (int zeile = 0; zeile < 8; zeile++) {
             for (int spalte = 0; spalte < 8; spalte++) {
-                schachbrett [zeile][spalte] = zeile == 1 ? new Feld(istSchwarz, Figur.Bauer, true) : new Feld(istSchwarz);
+                if (zeile == 1 || zeile == 6){
+                    schachbrett [zeile][spalte] = new Feld(istSchwarz, Figur.Bauer, zeile == 1);
+                }
+                else if (zeile == 0 || zeile == 7){
+                    if (spalte == 1 || spalte == 6){
+                        schachbrett [zeile][spalte] = new Feld(istSchwarz, Figur.Pferd, zeile == 0);
+                    }
+                    else{
+                        schachbrett [zeile][spalte] = new Feld(istSchwarz);
+                    }
+                }
+                // für alle anderen leeren Felder:
+                else{
+                    schachbrett [zeile][spalte] = new Feld(istSchwarz);
+                }
 
-                schachbrett [zeile][spalte] = zeile == 0 ? new Feld(istSchwarz, Figur.Pferd, true) : new Feld(istSchwarz);
                 this.add(schachbrett[zeile][spalte]);
+
 
 //                schachbrett [zeile][spalte] = zeile == 5 ? new Feld(istSchwarz, Figur.Pferd, true) : new Feld(istSchwarz);
 //                this.add(schachbrett[zeile][spalte]);
