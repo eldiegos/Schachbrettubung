@@ -10,7 +10,7 @@ public class StartFenster extends JFrame{
 
     public StartFenster(String title) {
         super(title);
-       setSize(300, 200);
+        setSize(300, 200);
         setVisible(true);
         setLayout(new GridLayout(1 , 2));
         JButton einSpieler = new JButton("Ein Spieler");

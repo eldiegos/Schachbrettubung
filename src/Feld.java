@@ -6,20 +6,26 @@ import java.awt.*;
  */
 public class Feld extends JLabel {
 
+    private Figur figur;
+    private boolean istFigurSchwarz;
+    private Color feldFarbe;
+    private boolean isSelected;
+
     public Feld(boolean istFeldSchwarz) {
 
         this.setHorizontalAlignment(CENTER);
         this.setVerticalAlignment(CENTER);
-        setBackground(istFeldSchwarz ? Color.BLACK : Color.WHITE);
+        feldFarbe = istFeldSchwarz ? Color.BLACK : Color.WHITE;
         setOpaque(true);
     }
-
 
 
     public Feld(boolean istFeldSchwarz, Figur figur, boolean istFigurSchwarz) {
 
         this(istFeldSchwarz);
-        if (figur != null){
+        this.figur = figur;
+        this.istFigurSchwarz = istFigurSchwarz;
+        if (this.figur != null) {
             String bildName = figur.getBildName(istFigurSchwarz);
             setIcon(createImageIcon(bildName));
         }
@@ -32,10 +38,44 @@ public class Feld extends JLabel {
         if (imgURL !=
                 null) {
             return new ImageIcon(imgURL, "");
-        }
-        else {
+        } else {
             System.out.println("Konnte " + pfad + " nicht finden.");
             return null;
         }
+    }
+
+    public Figur getFigur() {
+        return figur;
+    }
+
+    public boolean isIstFigurSchwarz() {
+        return istFigurSchwarz;
+    }
+
+    @Override
+    public Color getBackground() {
+        return isSelected ? Color.RED : feldFarbe;
+    }
+
+    public void setSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+        repaint();
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSpielFigur(Figur figur, boolean istFigurSchwarz) {
+        this.figur = figur;
+        this.istFigurSchwarz = istFigurSchwarz;
+        if (figur == null) {
+            setIcon(null);
+        }
+        else {
+            String bildName = figur.getBildName(istFigurSchwarz);
+            setIcon(createImageIcon(bildName));
+        }
+        repaint();
     }
 }
