@@ -6,7 +6,8 @@ public class Start {
     public static void main(String[] args) {
 
         //StartFenster hansolo = new StartFenster("KK");
-        GUI nasi = new GUI("KK");
+        GUI nasdi = new GUI("KK");
+        nasdi.setVisible(true);
 
 
 
