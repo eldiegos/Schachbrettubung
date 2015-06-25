@@ -108,6 +108,7 @@ public class GUI extends JFrame {
     private void markiereSchachbrett(final Feld[][] schachbrett, Feld feld){
         Figur figur = feld.getFigur();
         if (figur == null){
+
             return;
             //TODO: löschen von vorhandenen bewegungsmarkierungen?
         }
@@ -131,7 +132,13 @@ public class GUI extends JFrame {
             case Koenig:
                 break;
             case Koenigin:
-                break;
+                for (Feld[] felds : schachbrett) {
+                    if (Arrays.asList(felds).contains(feld)){
+                        for (Feld feld1 : felds) {
+                            feld1.setSelected(true);
+                        }
+                    }
+                };
         }
 
     }
