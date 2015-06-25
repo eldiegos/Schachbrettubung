@@ -9,7 +9,7 @@ public class Feld extends JLabel {
     private Figur figur;
     private boolean istFigurSchwarz;
     private Color feldFarbe;
-    private boolean isSelected;
+    private boolean isSelected, isMarked;
 
     public Feld(boolean istFeldSchwarz) {
 
@@ -54,7 +54,7 @@ public class Feld extends JLabel {
 
     @Override
     public Color getBackground() {
-        return isSelected ? Color.RED : feldFarbe;
+        return isSelected ? Color.RED : isMarked? Color.CYAN: feldFarbe;
     }
 
     public void setSelected(boolean isSelected) {
@@ -64,6 +64,15 @@ public class Feld extends JLabel {
 
     public boolean isSelected() {
         return isSelected;
+    }
+
+    public boolean isMarked() {
+        return isMarked;
+    }
+
+    public void setMarked(boolean isMarked) {
+        this.isMarked = isMarked;
+        repaint();
     }
 
     public void setSpielFigur(Figur figur, boolean istFigurSchwarz) {
