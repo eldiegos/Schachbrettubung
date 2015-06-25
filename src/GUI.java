@@ -113,6 +113,7 @@ public class GUI extends JFrame {
         int zeilenNummer = getZeilenNummer(feld, schachbrett);
         int spaltenNummer = getSpaltenNummer(feld, schachbrett);
         List<Feld> zeilenListe = Arrays.asList(schachbrett[zeilenNummer]);
+        List<Feld> spaltenListe = Arrays.asList(schachbrett[spaltenNummer]);
 
         switch (figur) {
 
@@ -120,7 +121,56 @@ public class GUI extends JFrame {
                 break;
 
             case Turm:
+//Nach rechts
+                for (int i = spaltenNummer + 1; i < zeilenListe.size(); i++) {
+                    Feld nachbarFeld = zeilenListe.get(i);
+                    if (nachbarFeld.getFigur() == null) {
+                        nachbarFeld.setMarked(true);
+                    } else {
+                        if (feld.isIstFigurSchwarz() != nachbarFeld.isIstFigurSchwarz()) {
+                            nachbarFeld.setMarked(true);
+                        }
+                        break;
+                    }
+                }
+ //Nach links
+                for (int i = spaltenNummer - 1; i >= 0; i--) {
+                    Feld nachbarFeld = zeilenListe.get(i);
+                    if (nachbarFeld.getFigur() == null) {
+                        nachbarFeld.setMarked(true);
+                    } else {
+                        if (feld.isIstFigurSchwarz() != nachbarFeld.isIstFigurSchwarz()) {
+                            nachbarFeld.setMarked(true);
+                        }
+                        break;
+                    }
+                }
+// Nach oben
+                for (int i = zeilenNummer + 1; i < spaltenListe.size(); i ++){
+                    Feld nachbarFeld = spaltenListe.get(i);
+                  if (nachbarFeld.getFigur() == null){
 
+                    //     for (Feld[] andereZeile : schachbrett) {
+                             nachbarFeld.setMarked(true);
+                          //  andereZeile[spaltenNummer].setMarked(true);
+                     //   }
+                      break;
+
+//                  }
+//                  else {
+//                      if (feld.isIstFigurSchwarz() != nachbarFeld.isIstFigurSchwarz()) {
+//                          nachbarFeld.setMarked(true);
+//                      }
+                 }
+
+                }
+            case Pferd:
+                break;
+            case Laufer:
+                break;
+            case Koenig:
+                break;
+            case Koenigin:
                 for (int i = spaltenNummer + 1; i < zeilenListe.size(); i++) {
                     Feld nachbarFeld = zeilenListe.get(i);
                     if (nachbarFeld.getFigur() == null) {
@@ -143,31 +193,7 @@ public class GUI extends JFrame {
                         break;
                     }
                 }
-                for (Feld[] andereZeile : schachbrett) {
 
-                    if(){
-
-                        andereZeile[spaltenNummer].setMarked(true);
-                    }
-                }
-            case Pferd:
-                break;
-            case Laufer:
-                break;
-            case Koenig:
-                break;
-            case Koenigin:
-                for (Feld[] felds : schachbrett) {
-                    if (Arrays.asList(felds).contains(feld)) {
-                        for (Feld feld1 : felds) {
-                            if (feld1.getFigur() == null) {
-                                feld1.setSelected(true);
-                            }
-                        }
-
-                    }
-                }
-                ;
         }
 
     }
