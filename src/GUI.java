@@ -144,7 +144,11 @@ public class GUI extends JFrame {
                     }
                 }
                 for (Feld[] andereZeile : schachbrett) {
-                    andereZeile[spaltenNummer].setMarked(true);
+
+                    if(){
+
+                        andereZeile[spaltenNummer].setMarked(true);
+                    }
                 }
             case Pferd:
                 break;
